@@ -13,6 +13,7 @@ import com.project.To_Do_ListApp.entities.ToDo;
 import com.project.To_Do_ListApp.repositories.ToDoRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @Controller
 public class PageController {
     @Autowired
@@ -57,4 +58,12 @@ public class PageController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/delete-item/{id}")
+    public String deleteItem(@PathVariable("id") Integer id) {
+        toDoRepository.deleteById(id);
+
+        return "redirect:/";
+    }
+    
 }

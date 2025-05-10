@@ -23,7 +23,7 @@
     </nav>
 
     <!-- This goes to the @PostMapping -->
-    <form th:action="@{/update-item}" th:object="${todo}" method="post">
+    <form th:action="@{/update-item}" th:object="${todo}" method="post" class="form-horizontal">
         <input type="hidden" th:field="*{id}"/> <!-- You need this or it will add a new item instead of updating the current one -->
 
         <label>Title:</label>

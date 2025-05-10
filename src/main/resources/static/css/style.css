@@ -8,3 +8,7 @@ img {
     width: 25%;
     height: 25%;
 }
+
+form {
+    display: inline-block;
+}

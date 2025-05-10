@@ -46,6 +46,9 @@
                             <td th:text="${toDo.completed}"></td>
                             <td>
                                 <a th:href="@{/edit-item/{id}(id=${toDo.id})}" class="btn btn-warning btn-sm">Edit</a>
+                                <form th:action="@{/delete-item/{id}(id=${toDo.id})}" method="post" style="display:inline-block;">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
