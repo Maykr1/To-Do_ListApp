@@ -1,12 +1,17 @@
 package com.project.To_Do_ListApp.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.To_Do_ListApp.entities.ToDo;
 import com.project.To_Do_ListApp.repositories.ToDoRepository;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PageController {
@@ -20,5 +25,36 @@ public class PageController {
         model.addAttribute("toDoList", toDoList);
 
         return "index";
+    }
+
+    @GetMapping("/add-item")
+    public String addItem(Model model) {
+        model.addAttribute("todo", new ToDo()); // matches th:object=""
+        
+        return "add-item";
+    }
+
+    @PostMapping("/todos")
+    public String createToDo(@ModelAttribute ToDo toDo) {
+        toDoRepository.save(toDo);
+        
+        return "redirect:/"; // send user back
+    }
+    
+    //Edit item
+    @GetMapping("/edit-item/{id}")
+    public String editItem(@PathVariable("id") Integer id, Model model) {
+        Optional<ToDo> selectedItem = toDoRepository.findById(id);
+        
+        model.addAttribute("todo", selectedItem);
+        return "edit-item";
+    }
+
+    //Update item after editing
+    @PostMapping("/update-item")
+    public String updateItem(@ModelAttribute ToDo toDo) {
+        toDoRepository.save(toDo);
+
+        return "redirect:/";
     }
 }
