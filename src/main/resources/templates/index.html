@@ -16,9 +16,8 @@
             </div>
 
             <ul class="nav navbar-nav">
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/add-item}">Add Item</a></li>
-                <li><a th:href="@{/clear}">Clear List</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/add-item}">Add Item</a></li>
             </ul>
         </div>
     </nav>
@@ -27,7 +26,13 @@
         <div class="row">
             <div class="col md-6">
                 <img th:src="@{/images/dog.jpg}" alt="Dog" class="img-response center-block">
-
+                
+                <form th:action="@{/clear}" method="POST">
+                    <button type="submit" class="btn btn-primary">Clear List</button>
+                </form>
+                <br>
+                <br>
+                
                 <table class="table table-response table-bordered">
                     <thead>
                         <tr>

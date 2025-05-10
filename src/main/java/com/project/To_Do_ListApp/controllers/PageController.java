@@ -70,7 +70,5 @@ public class PageController {
     public String deleteAllItems() {
         toDoRepository.deleteAll();
         return "redirect:/";
-    }
-    
-    
+    }   
 }
