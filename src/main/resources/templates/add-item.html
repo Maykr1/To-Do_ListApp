@@ -22,21 +22,35 @@
         </div>
     </nav>
 
-    <!-- This goes to the @PostMapping -->
-    <form th:action="@{/todos}" th:object="${todo}" method="post">
-        <label>Title:</label>
-        <input type="text" th:field="*{title}" class="form-check-input"/>
+    <div class="container">
+        <div class="row">
+            <div class="col md-6">
+                <!-- This goes to the @PostMapping -->
+                <form th:action="@{/todos}" th:object="${todo}" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" th:field="*{title}" class="form-control" required/>
+                    </div>
 
-        <label>Description:</label>
-        <input type="text" th:field="*{description}" class="form-check-input"/>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text" th:field="*{description}" class="form-control"/>
+                    </div>
 
-        <label>Due Date:</label>
-        <input type="date" th:field="*{dueDate}" class="form-check-input"/>
+                    <div class="form-group">
+                        <label>Due Date:</label>
+                        <input type="date" th:field="*{dueDate}" class="form-control" required/>
+                    </div>
 
-        <label>Completed:</label>
-        <input type="checkbox" th:field="*{completed}" class="form-check-input"/>
+                    <div class="form-group">
+                        <label>Completed:</label>
+                        <input type="checkbox" th:field="*{completed}" class="form-check-input"/>
+                    </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

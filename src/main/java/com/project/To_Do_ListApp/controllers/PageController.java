@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.To_Do_ListApp.entities.ToDo;
 import com.project.To_Do_ListApp.repositories.ToDoRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -36,9 +37,8 @@ public class PageController {
     }
 
     @PostMapping("/todos")
-    public String createToDo(@ModelAttribute ToDo toDo) {
+    public String createToDo(@ModelAttribute("todo") ToDo toDo) {
         toDoRepository.save(toDo);
-        
         return "redirect:/"; // send user back
     }
     
@@ -53,9 +53,8 @@ public class PageController {
 
     //Update item after editing
     @PostMapping("/update-item")
-    public String updateItem(@ModelAttribute ToDo toDo) {
+    public String updateItem(@ModelAttribute("todo") ToDo toDo) {
         toDoRepository.save(toDo);
-
         return "redirect:/";
     }
 
