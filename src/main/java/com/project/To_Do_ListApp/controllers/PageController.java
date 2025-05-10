@@ -15,6 +15,7 @@ import com.project.To_Do_ListApp.repositories.ToDoRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+
 @Controller
 public class PageController {
     @Autowired
@@ -64,5 +65,12 @@ public class PageController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/clear")
+    public String deleteAllItems() {
+        toDoRepository.deleteAll();
+        return "redirect:/";
+    }
+    
     
 }
