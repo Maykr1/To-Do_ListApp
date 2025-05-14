@@ -18,9 +18,6 @@ public class ToDoServiceImpl implements ToDoService {
     @Override
     public Iterable<ToDo> getAllToDos() {
         Iterable<ToDo> allToDos = this.toDoRepository.findAll();
-        if (!allToDos.iterator().hasNext()) {
-            throw new ResourceNotFoundException("Cannot find any ToDos");
-        }
 
         return allToDos;
     }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.To_Do_ListApp.entities.ToDo;
 import com.project.To_Do_ListApp.repositories.ToDoRepository;
+import com.project.To_Do_ListApp.services.ToDoService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,11 +23,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PageController implements ErrorController {
     @Autowired
+    private ToDoService toDoService;
+
+    @Autowired
     private ToDoRepository toDoRepository;
 
     @GetMapping("/")
     public String home(Model model) {
-        Iterable<ToDo> toDoList = this.toDoRepository.findAll();
+        Iterable<ToDo> toDoList = this.toDoService.getAllToDos();
 
         model.addAttribute("toDoList", toDoList);
 
@@ -42,14 +46,14 @@ public class PageController implements ErrorController {
 
     @PostMapping("/todos")
     public String createToDo(@ModelAttribute("todo") ToDo toDo) {
-        toDoRepository.save(toDo);
+        toDoService.createToDo(toDo);
         return "redirect:/"; // send user back
     }
     
     //Edit item
     @GetMapping("/edit-item/{id}")
     public String editItem(@PathVariable("id") Integer id, Model model) {
-        Optional<ToDo> selectedItem = toDoRepository.findById(id);
+        Optional<ToDo> selectedItem = toDoService.getToDoById(id);
         
         model.addAttribute("todo", selectedItem);
         return "edit-item";
@@ -58,13 +62,13 @@ public class PageController implements ErrorController {
     //Update item after editing
     @PostMapping("/update-item")
     public String updateItem(@ModelAttribute("todo") ToDo toDo) {
-        toDoRepository.save(toDo);
+        toDoService.updateToDo(toDo.getId(), toDo);
         return "redirect:/";
     }
 
     @PostMapping("/delete-item/{id}")
     public String deleteItem(@PathVariable("id") Integer id) {
-        toDoRepository.deleteById(id);
+        toDoService.deleteToDo(id);
 
         return "redirect:/";
     }
