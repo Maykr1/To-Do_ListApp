@@ -37,7 +37,7 @@ public class PageController implements ErrorController {
     public String addItem(Model model) {
         model.addAttribute("todo", new ToDo()); // matches th:object=""
         
-        return "add-item";
+        return "add-edit-item";
     }
 
     @PostMapping("/todos")
@@ -52,14 +52,7 @@ public class PageController implements ErrorController {
         Optional<ToDo> selectedItem = toDoService.getToDoById(id);
         
         model.addAttribute("todo", selectedItem);
-        return "edit-item";
-    }
-
-    //Update item after editing
-    @PostMapping("/update-item")
-    public String updateItem(@ModelAttribute("todo") ToDo toDo) {
-        toDoService.updateToDo(toDo.getId(), toDo);
-        return "redirect:/";
+        return "add-edit-item";
     }
 
     @PostMapping("/delete-item/{id}")

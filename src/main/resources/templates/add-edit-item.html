@@ -21,14 +21,14 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="row">
             <div class="col md-6">
                 <!-- This goes to the @PostMapping -->
                 <form th:action="@{/todos}" th:object="${todo}" method="post" class="form-horizontal">
                     <input type="hidden" th:field="*{id}"/> <!-- You need this or it will add a new item instead of updating the current one -->
-
+                    
                     <div class="form-group">
                         <label>Title:</label>
                         <input type="text" th:field="*{title}" class="form-control" required/>
