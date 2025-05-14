@@ -74,4 +74,9 @@ public class ToDoServiceImpl implements ToDoService {
         this.toDoRepository.delete(toDoToDelete);
         return toDoToDelete;
     }
+
+    @Override
+    public void deleteAll() {
+        this.toDoRepository.deleteAll();
+    }
 }

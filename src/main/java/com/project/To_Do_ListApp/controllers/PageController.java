@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.To_Do_ListApp.entities.ToDo;
-import com.project.To_Do_ListApp.repositories.ToDoRepository;
 import com.project.To_Do_ListApp.services.ToDoService;
 
 import jakarta.servlet.RequestDispatcher;
@@ -24,9 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PageController implements ErrorController {
     @Autowired
     private ToDoService toDoService;
-
-    @Autowired
-    private ToDoRepository toDoRepository;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -75,7 +71,7 @@ public class PageController implements ErrorController {
 
     @PostMapping("/clear")
     public String deleteAllItems() {
-        toDoRepository.deleteAll();
+        toDoService.deleteAll();
         return "redirect:/";
     }
 

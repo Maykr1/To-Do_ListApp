@@ -10,4 +10,5 @@ public interface ToDoService {
     public abstract ToDo createToDo(ToDo toDo);
     public abstract ToDo updateToDo(Integer id, ToDo toDo);
     public abstract ToDo deleteToDo(Integer id);
+    public abstract void deleteAll();
 }
