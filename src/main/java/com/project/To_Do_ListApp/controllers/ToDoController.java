@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.To_Do_ListApp.entities.ToDo;
 import com.project.To_Do_ListApp.services.ToDoService;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,11 +24,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/ToDo")
+@Tag(name = "To Do") // Change name of controller
 public class ToDoController {
     @Autowired
     private ToDoService toDoService;
 
+    
     @GetMapping("")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Success/Fetched All ToDos"),
+        @ApiResponse(responseCode = "400", description = "Bad Request"),
+        @ApiResponse(responseCode = "404", description = "Not Found/ToDo not Found")
+    })
     public Iterable<ToDo> getAllToDos() {
         return this.toDoService.getAllToDos();
     }
