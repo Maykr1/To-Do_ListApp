@@ -10,6 +10,9 @@ import com.project.To_Do_ListApp.exceptions.ResourceNotFoundException;
 import com.project.To_Do_ListApp.repositories.ToDoRepository;
 import com.project.To_Do_ListApp.services.ToDoService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ToDoServiceImpl implements ToDoService {
     @Autowired
@@ -18,7 +21,7 @@ public class ToDoServiceImpl implements ToDoService {
     @Override
     public Iterable<ToDo> getAllToDos() {
         Iterable<ToDo> allToDos = this.toDoRepository.findAll();
-
+        log.info("Got all toDos");
         return allToDos;
     }
 
@@ -28,7 +31,7 @@ public class ToDoServiceImpl implements ToDoService {
         if (!toDo.isPresent()) {
             throw new ResourceNotFoundException("ToDo not found with id: " + id);
         }
-
+        log.info("Got toDo at Id: {}", toDo.get().getId());
         return toDo;
     }
 
