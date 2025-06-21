@@ -1,14 +1,14 @@
-package com.project.To_Do_ListApp.services.impl;
+package com.project.To_Do_ListApp.service.impl;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.To_Do_ListApp.entities.ToDo;
-import com.project.To_Do_ListApp.exceptions.ResourceNotFoundException;
-import com.project.To_Do_ListApp.repositories.ToDoRepository;
-import com.project.To_Do_ListApp.services.ToDoService;
+import com.project.To_Do_ListApp.entity.ToDo;
+import com.project.To_Do_ListApp.exception.ResourceNotFoundException;
+import com.project.To_Do_ListApp.repository.ToDoRepository;
+import com.project.To_Do_ListApp.service.ToDoService;
 
 import lombok.extern.slf4j.Slf4j;
 

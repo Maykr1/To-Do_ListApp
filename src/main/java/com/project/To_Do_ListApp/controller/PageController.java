@@ -1,4 +1,4 @@
-package com.project.To_Do_ListApp.controllers;
+package com.project.To_Do_ListApp.controller;
 
 import java.util.Optional;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.project.To_Do_ListApp.entities.ToDo;
-import com.project.To_Do_ListApp.services.ToDoService;
+import com.project.To_Do_ListApp.entity.ToDo;
+import com.project.To_Do_ListApp.service.ToDoService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;

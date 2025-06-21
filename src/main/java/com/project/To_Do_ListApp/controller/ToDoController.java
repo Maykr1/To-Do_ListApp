@@ -1,4 +1,4 @@
-package com.project.To_Do_ListApp.controllers;
+package com.project.To_Do_ListApp.controller;
 
 import java.util.Optional;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.To_Do_ListApp.entities.ToDo;
-import com.project.To_Do_ListApp.services.ToDoService;
+import com.project.To_Do_ListApp.entity.ToDo;
+import com.project.To_Do_ListApp.service.ToDoService;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

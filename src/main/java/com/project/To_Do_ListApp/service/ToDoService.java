@@ -1,8 +1,8 @@
-package com.project.To_Do_ListApp.services;
+package com.project.To_Do_ListApp.service;
 
 import java.util.Optional;
 
-import com.project.To_Do_ListApp.entities.ToDo;
+import com.project.To_Do_ListApp.entity.ToDo;
 
 public interface ToDoService {
     public abstract Iterable<ToDo> getAllToDos();

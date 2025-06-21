@@ -1,4 +1,4 @@
-package com.project.To_Do_ListApp.entities;
+package com.project.To_Do_ListApp.entity;
 
 import java.sql.Date;
 
